@@ -29,7 +29,7 @@ export class CdkFargateEcsStack extends cdk.Stack {
           APP_ENV: 'Development',
           TEST_ENVIRONMENT_VARIABLE1: 'test environment variable 1 value',
           TEST_ENVIRONMENT_VARIABLE2: 'test environment variable 2 value'
-        },
+        }
       },
       desiredCount: 2,
       publicLoadBalancer: true
@@ -40,14 +40,14 @@ export class CdkFargateEcsStack extends cdk.Stack {
       maxCapacity: 4
     });
 
-    // cpu utilization policy
+    // scale cpu utilization
     autoscaling.scaleOnCpuUtilization('CpuScaling', {
       targetUtilizationPercent: 75,
       scaleInCooldown: cdk.Duration.seconds(120),
       scaleOutCooldown: cdk.Duration.seconds(120)
     });
 
-    // memory utilization policy
+    // scale memory utilization
     autoscaling.scaleOnMemoryUtilization('MemoryScaling', {
       targetUtilizationPercent: 60,
       scaleInCooldown: cdk.Duration.seconds(120),
